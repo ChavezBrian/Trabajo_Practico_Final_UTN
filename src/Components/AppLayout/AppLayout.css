@@ -1,23 +1,58 @@
 /* src/components/AppLayout.css */
-.app-layout {
+.app-shell {
     display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background-color: #121214;
+}
+
+.app-layout {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    width: 100vw;
+    height: calc(100vh - 28px);
+    overflow: hidden;
+    background-color: #121214;
+}
+
+/* Recuadro que agrupa la sidebar de contactos y el área de contenido (Home / Chats) */
+.app-main-stage {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-left: 1px solid #29292D;
+    border-top: 1px solid #29292D;
     background-color: var(--bg-chat);
+    position: relative;
 }
 
 .main-content-area {
     display: flex;
     flex: 1;
     min-width: 0;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     background-color: var(--bg-chat);
 }
 
 /* Modo Responsive (<= 768px) */
 @media (max-width: 768px) {
+    .app-layout .discord-server-rail {
+        display: none;
+    }
+
+    .app-main-stage {
+        border-top-left-radius: 0;
+        border-left: none;
+        border-top: none;
+        width: 100vw;
+    }
+
     .app-layout.chat-active .discord-sidebar {
         display: none;
     }

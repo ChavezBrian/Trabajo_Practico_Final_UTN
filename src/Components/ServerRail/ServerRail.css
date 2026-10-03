@@ -1,0 +1,82 @@
+/* src/components/ServerRail/ServerRail.css */
+.discord-server-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 72px;
+    min-width: 72px;
+    height: 100%;
+    background-color: #121214;
+    padding-top: 0;
+    margin-top: 0;
+    box-sizing: border-box;
+    user-select: none;
+    z-index: 10;
+}
+
+.server-item-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    margin-top: 1px;
+    box-sizing: border-box;
+}
+
+/* Indicador blanco (píldora) de Discord a la izquierda */
+.server-pill {
+    position: absolute;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: #ffffff;
+    border-radius: 0 4px 4px 0;
+    transition: height 0.18s ease;
+}
+
+.server-pill.active {
+    height: 32px;
+}
+
+.server-item-wrapper:hover .server-pill:not(.active) {
+    height: 16px;
+}
+
+/* Botón con logo de Discord proporcionado (40x40px) */
+.server-discord-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background-color: #5865f2;
+    /* Blurple oficial de Discord */
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-radius 0.18s ease, background-color 0.18s ease;
+    box-sizing: border-box;
+}
+
+.server-discord-btn:hover {
+    border-radius: 12px;
+    background-color: #4752c4;
+}
+
+.server-discord-svg {
+    display: block;
+    width: 24px;
+    height: 18px;
+}
+
+/* Separador horizontal sutil debajo del logo */
+.server-separator {
+    width: 32px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 7px 0;
+}

@@ -2,14 +2,15 @@
 .discord-sidebar {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 240px;
     min-width: 240px;
-    height: 100vh;
+    height: 100%;
     background-color: var(--bg-sidebar);
     padding: 0px 8px 0 8px;
     box-sizing: border-box;
     user-select: none;
-    border-right: 1px solid var(--border-subtle);
+    border-right: 1px solid #29292D;
+    border-top-left-radius: 8px;
 }
 
 /* Buscador superior */
@@ -17,10 +18,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 47px;
-    padding: 0 4px 0px 4px;
+    height: 48px;
+    min-height: 48px;
+    margin-left: -8px;
+    margin-right: -8px;
+    width: calc(100% + 16px);
+    padding: 0 10px;
     border-bottom: 1px solid #29292D;
     margin-bottom: 6px;
+    box-sizing: border-box;
+    border-top-left-radius: 8px;
 }
 
 .sidebar-search-input {
@@ -261,32 +268,37 @@
     margin-left: auto;
 }
 
-/* Barra inferior fija del usuario */
+/* Barra inferior del usuario - Expandida hacia la izquierda y alineada con el input */
 .user-profile-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 65px;
     background-color: var(--bg-user-bar);
-    padding: 0 8px;
+    padding: 0 12px;
     margin-bottom: 24px;
+    margin-left: -72px; /* Se expande hacia la izquierda cubriendo el área del ServerRail */
+    width: calc(100% + 72px); /* Aumenta el ancho para cubrir el espacio */
     border-radius: 8px;
     box-sizing: border-box;
     user-select: none;
-    border-top: 1px solid var(--border-subtle);
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    z-index: 25; /* Queda por encima de la columna del rail */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .user-profile-info {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 4px 6px;
     border-radius: 4px;
     cursor: pointer;
     min-width: 0;
     height: 50px;
     flex: 1;
-    margin-right: 2px;
+    margin-right: 6px;
     transition: background-color 0.15s ease;
 }
 
@@ -308,19 +320,6 @@
     font-weight: 700;
     text-transform: uppercase;
     user-select: none;
-}
-
-
-.status-badge.idle {
-    background-color: var(--status-idle);
-}
-
-.user-status-icon.dnd {
-    background-color: var(--status-dnd);
-}
-
-.user-status-icon.offline {
-    background-color: var(--status-offline);
 }
 
 .user-avatar-wrapper {
@@ -349,7 +348,6 @@
     height: 14px;
     border-radius: 50%;
     border: 2px solid #232428;
-    /* Recorte con el fondo oscuro de la barra inferior */
 }
 
 .user-text-details {
@@ -357,7 +355,7 @@
     flex-direction: column;
     justify-content: center;
     min-width: 0;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 .current-user-name {
@@ -380,6 +378,7 @@
 .user-profile-actions {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .profile-icon-btn {
@@ -409,11 +408,13 @@
         min-width: 100vw;
         padding: 12px 12px 0 12px;
         border-right: none;
+        border-top-left-radius: 0;
     }
 
     .user-profile-bar {
-        margin: 0 -12px;
-        padding: 0 12px;
+        margin-left: 0;
+        width: 100%;
+        margin-bottom: 12px;
     }
 
     .contact-item {

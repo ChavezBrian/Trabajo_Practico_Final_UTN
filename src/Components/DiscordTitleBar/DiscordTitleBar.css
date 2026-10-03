@@ -1,0 +1,49 @@
+/* src/components/DiscordTitleBar/DiscordTitleBar.css */
+.discord-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 28px;
+    min-height: 28px;
+    width: 100vw;
+    background-color: #121214;
+    box-sizing: border-box;
+    user-select: none;
+    z-index: 100;
+}
+
+.titlebar-side-spacer {
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.titlebar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.titlebar-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #949ba4;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: default;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.titlebar-indicator-icon {
+    width: 15px;
+    height: 15px;
+    display: block;
+    flex-shrink: 0;
+}
+
+.titlebar-indicator-text {
+    line-height: 1;
+}
