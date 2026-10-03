@@ -50,16 +50,47 @@ export default function HomeScreen() {
 
             {/* 2. Área principal de contenido */}
             <div className="friends-content-area">
-                {/* Input de búsqueda */}
+                {/* Input de búsqueda estilo Discord con lupa */}
                 <div className="friends-search-wrapper">
-                    <input
-                        type="text"
-                        className="friends-search-input"
-                        placeholder="Search"
-                        aria-label="Search friends"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
+                    <div className="friends-search-bar">
+                        <svg
+                            className="friends-search-icon"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                        >
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input
+                            type="text"
+                            className="friends-search-input"
+                            placeholder="Search"
+                            aria-label="Search friends"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        {searchQuery && (
+                            <button
+                                type="button"
+                                className="friends-search-clear-btn"
+                                aria-label="Clear search"
+                                title="Clear"
+                                onClick={() => setSearchQuery('')}
+                            >
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        )}
+                    </div>
                 </div>
 
                 {/* Contador de amigos */}

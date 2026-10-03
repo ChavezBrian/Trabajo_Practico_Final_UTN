@@ -6,7 +6,7 @@
     min-height: 48px;
     padding: 0 16px;
     background-color: var(--bg-chat);
-    border-bottom: 1px solid #29292D;
+    border-bottom: 1px solid var(--border-separator);
     box-sizing: border-box;
     z-index: 2;
 }
@@ -36,7 +36,7 @@
 }
 
 .chat-header-hashtag {
-    color: #80848e;
+    color: var(--text-muted);
     font-size: 22px;
     font-weight: 600;
     line-height: 1;

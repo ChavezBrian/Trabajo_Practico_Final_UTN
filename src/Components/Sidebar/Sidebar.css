@@ -2,14 +2,14 @@
 .discord-sidebar {
     display: flex;
     flex-direction: column;
-    width: 240px;
+    width: 300px;
     min-width: 240px;
     height: 100%;
     background-color: var(--bg-sidebar);
     padding: 0px 8px 0 8px;
     box-sizing: border-box;
     user-select: none;
-    border-right: 1px solid #29292D;
+    border-right: 1px solid var(--border-separator);
     border-top-left-radius: 8px;
 }
 
@@ -24,7 +24,7 @@
     margin-right: -8px;
     width: calc(100% + 16px);
     padding: 0 10px;
-    border-bottom: 1px solid #29292D;
+    border-bottom: 1px solid var(--border-separator);
     margin-bottom: 6px;
     box-sizing: border-box;
     border-top-left-radius: 8px;
@@ -34,11 +34,12 @@
     width: 100%;
     height: 28px;
     padding: 0 8px;
-    background-color: var(--bg-app);
-    border: none;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-sidebar-search-input);
     border-radius: 4px;
     color: var(--text-normal);
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 500;
     font-family: inherit;
     outline: none;
     box-sizing: border-box;
@@ -79,10 +80,10 @@
     width: 100%;
     height: 42px;
     padding: 0 12px;
-    border-radius: 4px;
+    border-radius: 10px;
     text-decoration: none;
     background-color: transparent;
-    color: #949ba4;
+    color: var(--text-muted);
     box-sizing: border-box;
     transition: background-color 0.15s ease, color 0.15s ease;
     user-select: none;
@@ -90,8 +91,8 @@
 
 /* Hover suave */
 .btn-return-home:hover {
-    background-color: rgba(255, 255, 255, 0.06);
-    color: #dbdee1;
+    background-color: var(--bg-hover);
+    color: var(--text-normal);
 }
 
 /* Icono blanco/gris */
@@ -106,17 +107,17 @@
 
 /* Texto Friends */
 .title-friends {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 20px;
     margin: 0;
     padding: 0;
-    line-height: 1;
 }
 
 /* Estado activo cuando te encuentras en /home */
 .btn-return-home.active {
-    background-color: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    background-color: var(--bg-active);
+    color: var(--text-header);
 }
 
 /* Título Direct Messages */
@@ -221,8 +222,9 @@
 
 .contact-name {
     color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -234,7 +236,7 @@
 }
 
 .contact-item.active .contact-name {
-    color: #ffffff;
+    color: var(--text-header);
 }
 
 .contact-item.active .contact-status-text {
@@ -247,7 +249,9 @@
 
 .contact-status-text {
     color: var(--text-muted);
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
     text-transform: capitalize;
 }
 
@@ -277,14 +281,17 @@
     background-color: var(--bg-user-bar);
     padding: 0 12px;
     margin-bottom: 24px;
-    margin-left: -72px; /* Se expande hacia la izquierda cubriendo el área del ServerRail */
-    width: calc(100% + 72px); /* Aumenta el ancho para cubrir el espacio */
+    margin-left: -72px;
+    /* Se expande hacia la izquierda cubriendo el área del ServerRail */
+    width: calc(100% + 72px);
+    /* Aumenta el ancho para cubrir el espacio */
     border-radius: 8px;
     box-sizing: border-box;
     user-select: none;
     border: 1px solid var(--border-subtle);
     position: relative;
-    z-index: 25; /* Queda por encima de la columna del rail */
+    z-index: 25;
+    /* Queda por encima de la columna del rail */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
@@ -303,7 +310,7 @@
 }
 
 .user-profile-info:hover {
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: var(--bg-hover);
 }
 
 .user-initial-avatar {
@@ -347,7 +354,7 @@
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    border: 2px solid #232428;
+    border: 2px solid var(--bg-user-bar);
 }
 
 .user-text-details {
@@ -360,8 +367,9 @@
 
 .current-user-name {
     color: var(--text-header);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
+    line-height: 18px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -378,6 +386,7 @@
 .user-profile-actions {
     display: flex;
     align-items: center;
+    gap: 4px;
     flex-shrink: 0;
 }
 
@@ -390,14 +399,14 @@
     background: transparent;
     border: none;
     border-radius: 4px;
-    color: #b5bac1;
+    color: var(--text-muted);
     cursor: pointer;
     transition: background-color 0.15s ease, color 0.15s ease;
     padding: 0;
 }
 
 .profile-icon-btn:hover {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--bg-hover);
     color: var(--text-normal);
 }
 

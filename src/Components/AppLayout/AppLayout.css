@@ -5,7 +5,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #121214;
+    background-color: var(--bg-rail);
 }
 
 .app-layout {
@@ -15,7 +15,7 @@
     width: 100vw;
     height: calc(100vh - 28px);
     overflow: hidden;
-    background-color: #121214;
+    background-color: var(--bg-rail);
 }
 
 /* Recuadro que agrupa la sidebar de contactos y el área de contenido (Home / Chats) */
@@ -25,8 +25,8 @@
     min-width: 0;
     height: 100%;
     border-top-left-radius: 8px;
-    border-left: 1px solid #29292D;
-    border-top: 1px solid #29292D;
+    border-left: 1px solid var(--border-separator);
+    border-top: 1px solid var(--border-separator);
     background-color: var(--bg-chat);
     position: relative;
 }

@@ -48,23 +48,26 @@
 
 .message-author {
     color: var(--text-header);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
+    line-height: 1.375rem;
 }
 
 .message-author.author-me {
-    color: lightgreen;
+    color: #5865F2;
 }
 
 .message-time {
     color: var(--text-muted);
     font-size: 12px;
+    line-height: 1.375rem;
 }
 
 .message-text {
     color: var(--text-normal);
-    font-size: 15px;
-    line-height: 1.375;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.375rem;
     word-break: break-word;
 }
 

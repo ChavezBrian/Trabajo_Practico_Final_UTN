@@ -19,7 +19,7 @@ export default function DiscordTitleBar() {
                             width="15"
                             height="15"
                             viewBox="0 0 24 24"
-                            fill="#ABACB2"
+                            fill="currentColor"
                             className="titlebar-indicator-icon"
                             xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true"

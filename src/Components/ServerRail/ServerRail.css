@@ -6,7 +6,7 @@
     width: 72px;
     min-width: 72px;
     height: 100%;
-    background-color: #121214;
+    background-color: var(--bg-rail);
     padding-top: 0;
     margin-top: 0;
     box-sizing: border-box;
@@ -31,7 +31,7 @@
     left: 0;
     width: 4px;
     height: 0;
-    background-color: #ffffff;
+    background-color: var(--text-header);
     border-radius: 0 4px 4px 0;
     transition: height 0.18s ease;
 }
@@ -77,6 +77,6 @@
     width: 32px;
     height: 2px;
     border-radius: 1px;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--border-separator);
     margin: 7px 0;
 }
