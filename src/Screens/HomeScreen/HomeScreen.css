@@ -1,0 +1,281 @@
+/* Contenedor principal con Flexbox */
+.friends-screen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-chat);
+    overflow: hidden;
+}
+
+/* Barra superior */
+.friends-topbar {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    gap: 16px;
+    user-select: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.topbar-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-header);
+}
+
+.topbar-section-title h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    font-weight: 600;
+}
+
+.topbar-divider {
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Pestañas */
+.friends-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #b5bac1;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.12s ease, color 0.12s ease;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-normal);
+}
+
+.tab-btn.active {
+    background-color: var(--bg-active);
+    color: #ffffff;
+}
+
+.add-friend-btn {
+    background-color: #248046;
+    color: #ffffff;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 6px;
+    transition: background-color 0.15s ease;
+    white-space: nowrap;
+}
+
+.add-friend-btn:hover {
+    background-color: #1a6334;
+}
+
+/* Contenido central */
+.friends-content-area {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px 24px;
+    overflow-y: auto;
+}
+
+/* Buscador de amigos */
+.friends-search-wrapper {
+    margin-bottom: 20px;
+}
+
+.friends-search-input {
+    width: 100%;
+    height: 34px;
+    padding: 0 12px;
+    background-color: var(--bg-app);
+    border: none;
+    border-radius: 4px;
+    color: var(--text-normal);
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.friends-search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.friends-search-input:focus {
+    background-color: var(--bg-app);
+}
+
+/* Título con contador */
+.friends-count-title {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 14px 0;
+}
+
+/* Lista de filas de amigos */
+.friends-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.friend-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+}
+
+.friend-row:hover {
+    background-color: var(--bg-hover);
+}
+
+.friend-info-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+/* Avatar con status badge */
+.friend-avatar-wrapper {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.friend-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-app);
+}
+
+.status-badge-lg {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-chat);
+}
+
+.status-badge-lg.online {
+    background-color: var(--status-online);
+}
+
+.status-badge-lg.idle {
+    background-color: var(--status-idle);
+}
+
+.status-badge-lg.dnd {
+    background-color: var(--status-dnd);
+}
+
+.status-badge-lg.offline {
+    background-color: var(--status-offline);
+}
+
+/* Tipografía del amigo */
+.friend-names {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.friend-username {
+    color: var(--text-header);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.friend-status-text {
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+/* Botones de acción lateral */
+.friend-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-icon-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: var(--bg-sidebar);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.15s ease;
+}
+
+.action-icon-btn:hover {
+    background-color: var(--bg-app);
+}
+
+.empty-friends-state {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .friends-topbar {
+        padding: 0 10px;
+        gap: 10px;
+    }
+
+    .friends-content-area {
+        padding: 14px 10px;
+    }
+
+    .friend-row {
+        padding: 8px 6px;
+    }
+
+    .action-icon-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}

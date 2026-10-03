@@ -1,0 +1,110 @@
+/* src/components/chat/MessageList.css */
+.message-list-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 16px 16px 8px 16px;
+    overflow-y: auto;
+    gap: 12px;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 4px 8px;
+    margin: 1px 0;
+    border-radius: 4px;
+    transition: background-color 0.1s ease;
+}
+
+.message-row:hover {
+    background-color: rgba(2, 2, 2, 0.08);
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background-color: var(--bg-app);
+}
+
+.message-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    flex: 1;
+}
+
+.message-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.message-author {
+    color: var(--text-header);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.message-author.author-me {
+    color: lightgreen;
+}
+
+.message-time {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.message-text {
+    color: var(--text-normal);
+    font-size: 15px;
+    line-height: 1.375;
+    word-break: break-word;
+}
+
+/* src/components/chat/MessageList.css */
+
+.message-initial-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5865f2;
+    /* Azul/Blurple de Discord */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    user-select: none;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+    .message-list-container {
+        padding: 12px 8px 4px 8px;
+        gap: 10px;
+    }
+
+    .message-row {
+        padding: 4px 4px;
+        gap: 10px;
+    }
+
+    .message-avatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .message-text {
+        font-size: 14px;
+    }
+}

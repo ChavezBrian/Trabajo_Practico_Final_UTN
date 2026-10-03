@@ -1,0 +1,87 @@
+/* src/components/chat/ChatHeader.css */
+.chat-header {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 16px;
+    background-color: var(--bg-chat);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.chat-header-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-mobile-back {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-right: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.chat-mobile-back:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-normal);
+}
+
+.chat-header-hashtag {
+    color: #80848e;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.chat-header-name {
+    color: var(--text-header);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status-badge-inline {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.status-badge-inline.online {
+    background-color: var(--status-online);
+}
+
+.status-badge-inline.idle {
+    background-color: var(--status-idle);
+}
+
+.status-badge-inline.dnd {
+    background-color: var(--status-dnd);
+}
+
+.status-badge-inline.offline {
+    background-color: var(--status-offline);
+}
+
+.chat-header-status-label {
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+    .chat-header {
+        padding: 0 12px;
+    }
+
+    .chat-mobile-back {
+        display: flex;
+    }
+}

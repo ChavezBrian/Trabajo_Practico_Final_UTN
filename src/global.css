@@ -1,0 +1,72 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap');
+
+/* Variables de tema estilo Discord */
+:root {
+    --bg-app: #1e1f22;
+    --bg-sidebar: #121214;
+    --bg-chat: #1A1A1E;
+    --bg-input: #383a40;
+    --bg-user-bar: #232428;
+    --bg-card: #313338;
+    --bg-hover: rgba(255, 255, 255, 0.07);
+    --bg-active: #35373c;
+    --text-normal: #dbdee1;
+    --text-muted: #949ba4;
+    --text-header: #f2f3f5;
+    --text-placeholder: #80848e;
+    --brand-blurple: #5865f2;
+    --brand-blurple-hover: #4752c4;
+    --status-online: #23a55a;
+    --status-idle: #f0b232;
+    --status-dnd: #f23f43;
+    --status-offline: #80848e;
+    --danger-color: #f23f43;
+    --danger-bg: rgba(242, 63, 67, 0.1);
+    --border-subtle: rgba(0, 0, 0, 0.2);
+    --font-family-base: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Reset / Normalización */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-app);
+    font-family: var(--font-family-base);
+    color: var(--text-normal);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* Scrollbar estilo Discord */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1a1b1e;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #111214;
+}

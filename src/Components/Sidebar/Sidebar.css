@@ -1,0 +1,431 @@
+/* src/components/Sidebar.css */
+.discord-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    min-width: 240px;
+    height: 100vh;
+    background-color: var(--bg-sidebar);
+    padding: 0px 8px 0 8px;
+    box-sizing: border-box;
+    user-select: none;
+    border-right: 1px solid var(--border-subtle);
+}
+
+/* Buscador superior */
+.sidebar-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 47px;
+    padding: 0 4px 0px 4px;
+    border-bottom: 1px solid #29292D;
+    margin-bottom: 6px;
+}
+
+.sidebar-search-input {
+    width: 100%;
+    height: 28px;
+    padding: 0 8px;
+    background-color: var(--bg-app);
+    border: none;
+    border-radius: 4px;
+    color: var(--text-normal);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease;
+}
+
+.sidebar-search-input::placeholder {
+    color: var(--text-muted);
+}
+
+.sidebar-search-input:focus {
+    background-color: var(--bg-app);
+}
+
+/* Mensaje cuando no hay resultados */
+.no-contacts-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 12px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-style: italic;
+    user-select: none;
+}
+
+/* Contenedor entre el buscador y Direct Messages */
+.sidebar-navigation-items {
+    padding: 0 4px 0 4px;
+}
+
+/* Botón estilo Discord para Friends */
+.btn-return-home {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: transparent;
+    color: #949ba4;
+    box-sizing: border-box;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    user-select: none;
+}
+
+/* Hover suave */
+.btn-return-home:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #dbdee1;
+}
+
+/* Icono blanco/gris */
+.friends-btn-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Texto Friends */
+.title-friends {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Estado activo cuando te encuentras en /home */
+.btn-return-home.active {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+/* Título Direct Messages */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px 6px 8px;
+}
+
+.sidebar-title {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Lista de chats */
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow-y: auto;
+    flex: 1;
+    padding-bottom: 8px;
+}
+
+/* Fila de contacto */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.12s ease, color 0.12s ease;
+    position: relative;
+}
+
+.contact-item:hover {
+    background-color: var(--bg-hover);
+}
+
+.contact-item.active {
+    background-color: var(--bg-active);
+}
+
+/* Avatar oficial 32px */
+.avatar-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-app);
+}
+
+/* Insignia de estado */
+.status-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-sidebar);
+}
+
+.status-badge.online {
+    background-color: var(--status-online);
+}
+
+.status-badge.idle {
+    background-color: var(--status-idle);
+}
+
+.status-badge.dnd {
+    background-color: var(--status-dnd);
+}
+
+.status-badge.offline {
+    background-color: var(--status-offline);
+}
+
+/* Tipografía de la información */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+    flex: 1;
+}
+
+.contact-name {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.12s ease;
+}
+
+.contact-item:hover .contact-name {
+    color: var(--text-normal);
+}
+
+.contact-item.active .contact-name {
+    color: #ffffff;
+}
+
+.contact-item.active .contact-status-text {
+    color: var(--text-normal);
+}
+
+.contact-item.active .status-badge {
+    border-color: var(--bg-active);
+}
+
+.contact-status-text {
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: capitalize;
+}
+
+.unread-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    background-color: var(--status-dnd);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 9px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* Barra inferior fija del usuario */
+.user-profile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+    background-color: var(--bg-user-bar);
+    padding: 0 8px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    user-select: none;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.user-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 0;
+    height: 50px;
+    flex: 1;
+    margin-right: 2px;
+    transition: background-color 0.15s ease;
+}
+
+.user-profile-info:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.user-initial-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--brand-blurple, #5865f2);
+    /* Azul/Púrpura Blurple de Discord */
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+
+.status-badge.idle {
+    background-color: var(--status-idle);
+}
+
+.user-status-icon.dnd {
+    background-color: var(--status-dnd);
+}
+
+.user-status-icon.offline {
+    background-color: var(--status-offline);
+}
+
+.user-avatar-wrapper {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar-wrapper .avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--bg-app);
+}
+
+.user-avatar-wrapper .status-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #232428;
+    /* Recorte con el fondo oscuro de la barra inferior */
+}
+
+.user-text-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    line-height: 1.2;
+}
+
+.current-user-name {
+    color: var(--text-header);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.current-user-status {
+    color: var(--text-muted);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-profile-actions {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: #b5bac1;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    padding: 0;
+}
+
+.profile-icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-normal);
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .discord-sidebar {
+        width: 100vw;
+        min-width: 100vw;
+        padding: 12px 12px 0 12px;
+        border-right: none;
+    }
+
+    .user-profile-bar {
+        margin: 0 -12px;
+        padding: 0 12px;
+    }
+
+    .contact-item {
+        padding: 8px 10px;
+    }
+
+    .avatar-wrapper {
+        width: 36px;
+        height: 36px;
+    }
+
+    .contact-name {
+        font-size: 15px;
+    }
+}

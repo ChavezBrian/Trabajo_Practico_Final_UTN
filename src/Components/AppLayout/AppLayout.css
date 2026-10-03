@@ -1,0 +1,40 @@
+/* src/components/AppLayout.css */
+.app-layout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-chat);
+}
+
+.main-content-area {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-chat);
+}
+
+/* Modo Responsive (<= 768px) */
+@media (max-width: 768px) {
+    .app-layout.chat-active .discord-sidebar {
+        display: none;
+    }
+
+    .app-layout.chat-active .main-content-area {
+        width: 100vw;
+        min-width: 100vw;
+        flex: 1;
+    }
+
+    .app-layout.home-active .main-content-area {
+        display: none;
+    }
+
+    .app-layout.home-active .discord-sidebar {
+        width: 100vw;
+        min-width: 100vw;
+        flex: 1;
+    }
+}
