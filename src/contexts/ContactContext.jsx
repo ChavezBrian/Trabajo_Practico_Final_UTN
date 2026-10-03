@@ -1,6 +1,4 @@
-// src/contexts/ContactContext.jsx
 import { createContext, useContext, useCallback } from 'react';
-import { Outlet } from 'react-router-dom';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { contact_list_server } from '../mocks/contacts.mock.js';
 
@@ -78,7 +76,7 @@ export function ContactContextProvider({ children }) {
 
     return (
         <ContactContext.Provider value={providerValues}>
-            {children || <Outlet />}
+            {children}
         </ContactContext.Provider>
     );
 }

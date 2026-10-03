@@ -1,0 +1,129 @@
+/* src/Components/LoadingScreen/LoadingScreen.css */
+.discord-loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1e1f22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    user-select: none;
+    animation: loadingFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes loadingFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    max-width: 520px;
+    text-align: center;
+}
+
+/* Logo Clyde con efecto pulsante fluido */
+.loading-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.loading-clyde-logo {
+    width: 78px;
+    height: 58px;
+    color: #5865F2;
+    animation: clydePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes clydePulse {
+    0% {
+        transform: scale(0.92);
+        filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.35));
+    }
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 24px rgba(88, 101, 242, 0.8));
+    }
+    100% {
+        transform: scale(0.92);
+        filter: drop-shadow(0 0 10px rgba(88, 101, 242, 0.35));
+    }
+}
+
+/* Tres puntos animados de carga */
+.loading-dots-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.loading-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #5865F2;
+    animation: dotPulse 1.4s infinite ease-in-out both;
+}
+
+.loading-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.loading-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.loading-dot:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes dotPulse {
+    0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Sección de consejos "DID YOU KNOW" */
+.loading-tip-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.loading-tip-header {
+    color: #5865F2;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.loading-tip-text {
+    color: #dbdee1;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.45;
+    margin: 0;
+    max-width: 440px;
+}

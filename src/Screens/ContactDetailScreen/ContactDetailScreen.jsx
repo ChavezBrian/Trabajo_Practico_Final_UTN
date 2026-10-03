@@ -3,8 +3,8 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import useChat from '../../hooks/useChat';
 import ChatHeader from '../../Components/Chat/ChatHeader';
-import MessageList from '../../Components/Message/MessageList';
-import MessageInput from '../../Components/Message/MessageInput';
+import MessageList from '../../Components/Chat/MessageList';
+import MessageInput from '../../Components/Chat/MessageInput';
 import './ContactDetailScreen.css';
 
 export default function ContactDetailScreen() {

@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function useLoginForm() {
-    const navigate = useNavigate();
     const { login } = useAuth();
 
     const [formState, setFormState] = useState({
@@ -13,6 +11,7 @@ export default function useLoginForm() {
     });
 
     const [errors, setErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     const limits = {
         name: 30,
@@ -79,19 +78,19 @@ export default function useLoginForm() {
         }
 
         setErrors({});
+        setIsLoading(true);
 
         login({
             name: formState.name,
             email: formState.email
         });
-
-        navigate("/home");
     }
 
     return {
         formState,
         errors,
         limits,
+        isLoading,
         handleSubmit,
         handleChange,
     };

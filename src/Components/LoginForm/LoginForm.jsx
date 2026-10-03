@@ -1,9 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import useLoginForm from '../../hooks/useLoginForm';
+import LoadingScreen from '../LoadingScreen/LoadingScreen';
 import './LoginForm.css';
 
 export default function LoginForm() {
-    const { formState, errors, handleSubmit, handleChange, limits } = useLoginForm();
+    const navigate = useNavigate();
+    const { formState, errors, handleSubmit, handleChange, limits, isLoading } = useLoginForm();
     const hasErrors = Object.keys(errors).length > 0;
+
+    if (isLoading) {
+        return <LoadingScreen onComplete={() => navigate('/home')} />;
+    }
 
     return (
         <div className='login-main-container'>
