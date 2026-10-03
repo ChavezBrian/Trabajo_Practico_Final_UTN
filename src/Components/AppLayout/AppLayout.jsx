@@ -1,7 +1,7 @@
 // src/components/AppLayout.jsx
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Sidebar from '../SideBar/SideBar';
+import Sidebar from '../Sidebar/Sidebar';
 import './AppLayout.css';
 
 export default function AppLayout() {

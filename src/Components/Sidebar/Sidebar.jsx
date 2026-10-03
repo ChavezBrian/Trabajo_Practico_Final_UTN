@@ -1,14 +1,15 @@
 // src/components/Sidebar.jsx
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContacts } from '../../contexts/ContactContext';
 import { useAuth } from '../../contexts/AuthContext';
 import './Sidebar.css';
 
 export default function Sidebar() {
     const { contacts } = useContacts();
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
     const location = useLocation();
+    const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
 
     const filteredContacts = contacts.filter((contact) =>
@@ -17,6 +18,11 @@ export default function Sidebar() {
 
     const isHomeActive = location.pathname === '/home';
 
+    function handleLogout() {
+        logout();
+        navigate('/');
+    }
+
     return (
         <aside className="discord-sidebar">
             <div className="sidebar-search-container">
@@ -24,6 +30,7 @@ export default function Sidebar() {
                     type="text"
                     className="sidebar-search-input"
                     placeholder="Find or start a conversation"
+                    aria-label="Find or start a conversation"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -36,7 +43,7 @@ export default function Sidebar() {
                     className={`btn-return-home ${isHomeActive ? 'active' : ''}`}
                 >
                     {/* SVG Oficial del icono Friends de Discord */}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
                         <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
                     </svg>
                     <span className="title-friends">Friends</span>
@@ -47,7 +54,7 @@ export default function Sidebar() {
                 <span className="sidebar-title">Direct Messages</span>
             </header>
 
-            <nav className="contacts-list">
+            <nav className="contacts-list" aria-label="Direct Messages List">
                 {filteredContacts.length > 0 ? (
                     filteredContacts.map((contact) => {
                         const isActive = location.pathname === `/chat/${contact.id}`;
@@ -108,6 +115,22 @@ export default function Sidebar() {
                             {currentUser?.customStatus || 'Online'}
                         </span>
                     </div>
+                </div>
+
+                <div className="user-profile-actions">
+                    <button
+                        type="button"
+                        className="profile-icon-btn"
+                        title="Log Out"
+                        aria-label="Log Out"
+                        onClick={handleLogout}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                    </button>
                 </div>
             </footer>
         </aside>

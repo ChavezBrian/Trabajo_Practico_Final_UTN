@@ -1,36 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useContacts } from '../../contexts/ContactContext'
+import useContactFilter from '../../hooks/useContactFilter';
 import './HomeScreen.css';
 
 export default function HomeScreen() {
-    const { contacts } = useContacts();
     const navigate = useNavigate();
-
-    // Pestaña activa: 'online' | 'all'
-    const [activeTab, setActiveTab] = useState('online');
-    // Buscador interno de amigos
-    const [searchQuery, setSearchQuery] = useState('');
-
-    // 1. Filtrar por pestaña (en Discord: 'online', 'idle' y 'dnd' cuentan como conectados activos)
-    const tabFilteredContacts = contacts.filter((contact) => {
-        if (activeTab === 'online') {
-            return contact.status !== 'offline';
-        }
-        return true; // 'all' muestra a todos
-    });
-
-    // 2. Filtrar por el texto del buscador
-    const displayedContacts = tabFilteredContacts.filter((contact) =>
-        contact.name.toLowerCase().includes(searchQuery.toLowerCase().trim())
-    );
+    const {
+        activeTab,
+        setActiveTab,
+        searchQuery,
+        setSearchQuery,
+        displayedContacts,
+        totalCount,
+    } = useContactFilter();
 
     return (
         <section className="friends-screen">
             {/* 1. Header con pestañas */}
             <header className="friends-topbar">
                 <div className="topbar-section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
                         <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
                     </svg>
                     <h2>Friends</h2>
@@ -38,7 +27,7 @@ export default function HomeScreen() {
 
                 <div className="topbar-divider" />
 
-                <nav className="friends-tabs">
+                <nav className="friends-tabs" aria-label="Friends filter tabs">
                     <button
                         type="button"
                         className={`tab-btn ${activeTab === 'online' ? 'active' : ''}`}
@@ -67,6 +56,7 @@ export default function HomeScreen() {
                         type="text"
                         className="friends-search-input"
                         placeholder="Search"
+                        aria-label="Search friends"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -74,7 +64,7 @@ export default function HomeScreen() {
 
                 {/* Contador de amigos */}
                 <h3 className="friends-count-title">
-                    {activeTab === 'online' ? 'Online' : 'All Friends'} — {displayedContacts.length}
+                    {activeTab === 'online' ? 'Online' : 'All Friends'} — {totalCount}
                 </h3>
 
                 {/* Lista de filas de amigos */}
@@ -105,13 +95,14 @@ export default function HomeScreen() {
                                 <button
                                     type="button"
                                     className="action-icon-btn"
-                                    title="Message"
+                                    title={`Message ${contact.name}`}
+                                    aria-label={`Message ${contact.name}`}
                                     onClick={(e) => {
                                         e.stopPropagation();
                                         navigate(`/chat/${contact.id}`);
                                     }}
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="grey" className="bi bi-chat-dots-fill" viewBox="0 0 16 16">
                                         <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
                                     </svg>
                                 </button>

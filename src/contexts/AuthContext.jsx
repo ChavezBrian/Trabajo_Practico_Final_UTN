@@ -1,43 +1,23 @@
-// src/contexts/AuthContext.jsx
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
-    // Si ya había un usuario guardado en localStorage, lo leemos
-    const [currentUser, setCurrentUser] = useState(() => {
-        try {
-            const savedUser = localStorage.getItem('chat_user');
-            return savedUser ? JSON.parse(savedUser) : null;
-        } catch (error) {
-            console.error('Error reading user from localStorage:', error);
-            return null;
-        }
-    });
+    const [currentUser, setCurrentUser] = useLocalStorage('chat_user', null);
 
     function login(userData) {
         const user = {
             name: userData.name,
             email: userData.email,
-            status: 'online', // Estado por defecto al iniciar sesión
+            status: 'online',
             customStatus: 'Exploring Grove Street'
         };
-
         setCurrentUser(user);
-        try {
-            localStorage.setItem('chat_user', JSON.stringify(user));
-        } catch (error) {
-            console.error('Error saving user to localStorage:', error);
-        }
     }
 
     function logout() {
         setCurrentUser(null);
-        try {
-            localStorage.removeItem('chat_user');
-        } catch (error) {
-            console.error('Error removing user from localStorage:', error);
-        }
     }
 
     return (

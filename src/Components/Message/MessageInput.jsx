@@ -20,6 +20,7 @@ export default function MessageInput({ onSendMessage, contactName }) {
                     type="text"
                     className="message-input"
                     placeholder={`Message @${contactName}`}
+                    aria-label={`Message @${contactName}`}
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
