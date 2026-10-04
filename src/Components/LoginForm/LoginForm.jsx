@@ -5,11 +5,18 @@ import './LoginForm.css';
 
 export default function LoginForm() {
     const navigate = useNavigate();
-    const { formState, errors, handleSubmit, handleChange, limits, isLoading } = useLoginForm();
+    const { formState, errors, handleSubmit, handleChange, limits, isLoading, completeLogin } = useLoginForm();
     const hasErrors = Object.keys(errors).length > 0;
 
     if (isLoading) {
-        return <LoadingScreen onComplete={() => navigate('/home')} />;
+        return (
+            <LoadingScreen
+                onComplete={() => {
+                    completeLogin();
+                    navigate('/home');
+                }}
+            />
+        );
     }
 
     return (

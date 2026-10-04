@@ -79,7 +79,9 @@ export default function useLoginForm() {
 
         setErrors({});
         setIsLoading(true);
+    }
 
+    function completeLogin() {
         login({
             name: formState.name,
             email: formState.email
@@ -93,5 +95,6 @@ export default function useLoginForm() {
         isLoading,
         handleSubmit,
         handleChange,
+        completeLogin,
     };
 }
