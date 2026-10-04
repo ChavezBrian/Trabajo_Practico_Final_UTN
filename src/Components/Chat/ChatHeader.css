@@ -2,6 +2,7 @@
 .chat-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 48px;
     min-height: 48px;
     padding: 0 16px;
@@ -15,6 +16,37 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    min-width: 0;
+}
+
+.chat-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chat-header-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.chat-header-action-btn:hover {
+    color: var(--text-normal);
+    background-color: var(--bg-hover);
+}
+
+.chat-header-action-btn.active {
+    color: var(--text-header);
+    background-color: var(--bg-active);
 }
 
 .chat-mobile-back {

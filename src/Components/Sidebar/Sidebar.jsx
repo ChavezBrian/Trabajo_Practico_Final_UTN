@@ -5,20 +5,33 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import './Sidebar.css';
 
+/**
+ * Barra lateral de navegación de mensajes directos (Sidebar).
+ * Incluye:
+ * - Buscador en tiempo real de conversaciones.
+ * - Botón para retornar a la sección de amigos (/home).
+ * - Lista de chats directos con avatares, estados de conexión e indicador de mensajes no leídos.
+ * - Barra inferior del perfil de usuario con botón para alternar el tema visual y botón para cerrar sesión.
+ */
 export default function Sidebar() {
     const { contacts } = useContacts();
     const { currentUser, logout } = useAuth();
     const { theme, toggleTheme } = useTheme();
     const location = useLocation();
     const navigate = useNavigate();
+
+    // Estado del buscador de conversaciones en la sidebar
     const [searchTerm, setSearchTerm] = useState('');
 
+    // Filtrado de contactos según el texto ingresado en el buscador
     const filteredContacts = contacts.filter((contact) =>
         contact.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
     );
 
+    // Comprueba si se encuentra en la pantalla de inicio (/home)
     const isHomeActive = location.pathname === '/home';
 
+    // Cierra sesión y redirige al formulario de login
     function handleLogout() {
         logout();
         navigate('/');
@@ -26,6 +39,7 @@ export default function Sidebar() {
 
     return (
         <aside className="discord-sidebar">
+            {/* 1. Buscador superior de conversaciones */}
             <div className="sidebar-search-container">
                 <input
                     type="text"
@@ -37,13 +51,12 @@ export default function Sidebar() {
                 />
             </div>
 
-            {/* 2. Botón para volver a Home / Friends */}
+            {/* 2. Botón de acceso a la sección de Amigos (Home) */}
             <div className="sidebar-navigation-items">
                 <Link
                     to="/home"
                     className={`btn-return-home ${isHomeActive ? 'active' : ''}`}
                 >
-                    {/* SVG Oficial del icono Friends de Discord */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
                         <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
                     </svg>
@@ -51,16 +64,18 @@ export default function Sidebar() {
                 </Link>
             </div>
 
+            {/* Encabezado de la lista de mensajes directos */}
             <header className="sidebar-header">
                 <span className="sidebar-title">Direct Messages</span>
             </header>
 
+            {/* 3. Lista de chats directos con cada contacto */}
             <nav className="contacts-list" aria-label="Direct Messages List">
                 {filteredContacts.length > 0 ? (
                     filteredContacts.map((contact) => {
                         const isActive = location.pathname === `/chat/${contact.id}`;
 
-                        // Contar mensajes entrantes no leídos
+                        // Conteo de mensajes entrantes con estado no leído ('unseen')
                         const unreadCount = contact.messages.filter(
                             (msg) => msg.delivery_status === 'unseen' && msg.author !== 'Me'
                         ).length;
@@ -71,6 +86,7 @@ export default function Sidebar() {
                                 to={`/chat/${contact.id}`}
                                 className={`contact-item ${isActive ? 'active' : ''}`}
                             >
+                                {/* Avatar con badge de estado de conexión */}
                                 <div className="avatar-wrapper">
                                     <img
                                         src={contact.image}
@@ -80,12 +96,13 @@ export default function Sidebar() {
                                     <span className={`status-badge ${contact.status}`} />
                                 </div>
 
+                                {/* Nombre y estado del contacto */}
                                 <div className="contact-info">
                                     <span className="contact-name">{contact.name}</span>
                                     <span className="contact-status-text">{contact.status}</span>
                                 </div>
 
-                                {/* Badge rojo de notificación de Discord */}
+                                {/* Badge numérico de mensajes no leídos */}
                                 {unreadCount > 0 && (
                                     <div className="unread-badge">
                                         {unreadCount}
@@ -101,8 +118,10 @@ export default function Sidebar() {
                 )}
             </nav>
 
+            {/* 4. Barra inferior del perfil del usuario conectado */}
             <footer className="user-profile-bar">
                 <div className="user-profile-info">
+                    {/* Inicial del usuario y su estado de conexión */}
                     <div className="avatar-wrapper user-avatar-wrapper">
                         <div className="user-initial-avatar">
                             {currentUser?.name ? currentUser.name.trim().charAt(0).toUpperCase() : '?'}
@@ -110,15 +129,18 @@ export default function Sidebar() {
                         <span className={`status-badge ${currentUser?.status || 'online'}`} />
                     </div>
 
+                    {/* Nombre y estado personalizado */}
                     <div className="user-text-details">
                         <span className="current-user-name">{currentUser?.name || 'Guest'}</span>
-                        <span className="current-user-status" title={currentUser?.customStatus}>
-                            {currentUser?.customStatus || 'Online'}
+                        <span className="current-user-status" title={currentUser?.customStatus || 'Exploring Runaterra'}>
+                            {currentUser?.customStatus || 'Exploring Runaterra'}
                         </span>
                     </div>
                 </div>
 
+                {/* Acciones de la barra de usuario: alternar tema y cerrar sesión */}
                 <div className="user-profile-actions">
+                    {/* Botón para cambiar entre tema claro y tema oscuro */}
                     <button
                         type="button"
                         className="profile-icon-btn"
@@ -127,7 +149,7 @@ export default function Sidebar() {
                         onClick={toggleTheme}
                     >
                         {theme === 'dark' ? (
-                            /* Sol para activar modo claro */
+                            /* Icono de sol cuando el tema activo es oscuro */
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <circle cx="12" cy="12" r="5" />
                                 <line x1="12" y1="1" x2="12" y2="3" />
@@ -140,12 +162,14 @@ export default function Sidebar() {
                                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                             </svg>
                         ) : (
-                            /* Luna para activar modo oscuro */
+                            /* Icono de luna cuando el tema activo es claro */
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                             </svg>
                         )}
                     </button>
+
+                    {/* Botón para cerrar sesión */}
                     <button
                         type="button"
                         className="profile-icon-btn"

@@ -2,19 +2,27 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './DiscordTitleBar.css';
 
+/**
+ * Barra superior de ventana estilo Discord (DiscordTitleBar).
+ * Muestra el título contextual según la ruta activa:
+ * 'Direct Messages' (con el icono de Discord Clyde) o 'Friends' (con el icono de personas).
+ */
 export default function DiscordTitleBar() {
     const location = useLocation();
+
+    // Comprueba si la ruta actual corresponde a una conversación de chat (/chat/:id)
     const isChat = location.pathname.startsWith('/chat');
 
     return (
         <header className="discord-titlebar">
-            {/* Espaciador izquierdo para equilibrar */}
+            {/* Espaciador izquierdo para equilibrar el centrado del título */}
             <div className="titlebar-side-spacer" />
 
-            {/* Centro: Título dinámico (Friends o Direct Messages) con su icono */}
+            {/* Centro: Título dinámico (Friends o Direct Messages) con su respectivo icono SVG */}
             <div className="titlebar-center">
                 {isChat ? (
                     <div className="titlebar-indicator">
+                        {/* Icono de Clyde oficial de Discord para los DMs */}
                         <svg
                             width="15"
                             height="15"
@@ -30,6 +38,7 @@ export default function DiscordTitleBar() {
                     </div>
                 ) : (
                     <div className="titlebar-indicator">
+                        {/* Icono de amigos de Discord para la sección Home */}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="14"

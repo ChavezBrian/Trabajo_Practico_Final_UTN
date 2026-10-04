@@ -7,4 +7,23 @@
     height: 100%;
     background-color: var(--bg-chat);
     overflow: hidden;
+    position: relative;
+}
+
+.chat-layout-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.chat-messages-pane {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
 }

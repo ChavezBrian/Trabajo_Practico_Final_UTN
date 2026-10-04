@@ -1,56 +1,72 @@
+/**
+ * Lista de contactos del servidor simulado (Mock Data).
+ * Representa la base de datos inicial de campeones de League of Legends.
+ * Cada contacto posee:
+ * - id: Identificador numérico único.
+ * - name: Nombre del campeón.
+ * - status: Estado de presencia estilo Discord ('online', 'idle', 'dnd', 'offline').
+ * - image: URL oficial del avatar del campeón (CDN Data Dragon de Riot Games).
+ * - banner_color: Color temático utilizado en el banner de la tarjeta de perfil.
+ * - member_since: Fecha de ingreso o lanzamiento del campeón.
+ * - description: Breve descripción biográfica del personaje.
+ * - messages: Historial de mensajes con id, contenido, autor, hora y estado de entrega ('seen' | 'unseen').
+ */
 export const contact_list_server = [
     {
         id: 1,
-        name: 'Carl Johnson (CJ)',
-        status: 'online', // Discord presence: online | idle | dnd | offline
-        image: 'https://static.wikia.nocookie.net/esgta/images/d/d3/Carl_Johnson_SA.png/revision/latest?cb=20260403161811',
+        name: 'Jinx',
+        status: 'online', // Estados de presencia de Discord: online | idle | dnd | offline
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Jinx.png',
+        banner_color: '#e83377',
+        member_since: 'Oct 10, 2013',
+        description: 'A manic and impulsive criminal from Zaun who loves unleashing chaos with her weapons Fishbones and Pow-Pow.',
         messages: [
             {
                 id: 1,
-                content: 'Ah shit, here we go again...',
-                author: 'Carl Johnson (CJ)',
+                content: 'Hey! Guess what I built today? A rocket launcher that shoots fireworks shaped like smiles! :D',
+                author: 'Jinx',
                 created_at: 'Today at 2:20 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'Where are you? We need you back at Grove Street.',
+                content: 'Please tell me you didn\'t test it near the Piltover treasury this time...',
                 author: 'Me',
                 created_at: 'Today at 2:25 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'Tenpenny dropped me off in the middle of rolling Ballas territory.',
-                author: 'Carl Johnson (CJ)',
+                content: 'Fishbones told me not to, but Pow-Pow said DO IT DO IT DO IT!',
+                author: 'Jinx',
                 created_at: 'Today at 2:27 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'Damn, are you armed at least?',
+                content: 'Caitlyn and the enforcers are already scanning the docks.',
                 author: 'Me',
                 created_at: 'Today at 2:28 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Just grabbed a BMX. Heading over right now, stay put.',
-                author: 'Carl Johnson (CJ)',
+                content: 'Pfft, let them chase me! The night is boring without a few explosions anyway!',
+                author: 'Jinx',
                 created_at: 'Today at 2:30 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 6,
-                content: 'Keep your head low. Sweet is waiting outside the house.',
+                content: 'Just keep your head low until the sirens stop.',
                 author: 'Me',
                 created_at: 'Today at 2:31 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 7,
-                content: 'Tell him to have some green rags ready. I will see you soon.',
-                author: 'Carl Johnson (CJ)',
+                content: 'Boring! I\'m painting neon graffiti on the hextech gates. Catch me if you can!',
+                author: 'Jinx',
                 created_at: 'Today at 2:32 PM',
                 delivery_status: 'seen'
             }
@@ -58,227 +74,211 @@ export const contact_list_server = [
     },
     {
         id: 2,
-        name: 'Big Smoke',
-        status: 'offline',
-        image: 'https://static.wikia.nocookie.net/esgta/images/5/5a/Big_Smoke_SA.png/revision/latest?cb=20221015155149',
+        name: 'Yasuo',
+        status: 'idle',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Yasuo.png',
+        banner_color: '#3a5a78',
+        member_since: 'Dec 13, 2013',
+        description: 'An agile Ionian swordsman who commands the wind itself to vanquish his foes and seek redemption.',
         messages: [
             {
                 id: 1,
-                content: 'Are you ordering anything from Cluckin Bell?',
+                content: 'Yasuo, the wind is howling across the Weeping Glade. Where are you heading?',
                 author: 'Me',
                 created_at: 'Today at 1:00 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'You know I am always down for a little snack.',
-                author: 'Big Smoke',
+                content: 'A wanderer isn\'t always lost. Just looking for a tavern with decent wine.',
+                author: 'Yasuo',
                 created_at: 'Today at 1:05 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'Go ahead, give me the full list before the line gets crazy.',
+                content: 'Noxian scouts were spotted past the border again.',
                 author: 'Me',
                 created_at: 'Today at 1:07 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'I will have two number 9s, a number 9 large, a number 6 with extra dip...',
-                author: 'Big Smoke',
+                content: 'No cure for fools... My blade will be ready when the wind turns.',
+                author: 'Yasuo',
                 created_at: 'Today at 1:10 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Smoke, you really going to eat all that yourself?',
+                content: 'Don\'t let anger cloud your blade, my friend.',
                 author: 'Me',
                 created_at: 'Today at 1:12 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 6,
-                content: 'A number 7, two number 45s, one with cheese, and a large soda.',
-                author: 'Big Smoke',
+                content: 'Honor is in the heart, not the name. Sleep well, summoner.',
+                author: 'Yasuo',
                 created_at: 'Today at 1:15 PM',
-                delivery_status: 'unseen'
-            },
-            {
-                id: 7,
-                content: 'You gotta eat to keep your strength up, homie.',
-                author: 'Big Smoke',
-                created_at: 'Today at 1:16 PM',
                 delivery_status: 'unseen'
             }
         ]
     },
     {
         id: 3,
-        name: 'Sweet',
+        name: 'Ahri',
         status: 'online',
-        image: 'https://static.wikia.nocookie.net/esgta/images/a/af/Sweet_Johnson_SA.png/revision/latest?cb=20260303060055',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Ahri.png',
+        banner_color: '#8b4a8e',
+        member_since: 'Dec 14, 2011',
+        description: 'A vastayan fox who shapes magic into orbs of raw energy, exploring Runeterra in search of her origin.',
         messages: [
             {
                 id: 1,
-                content: 'The Ballas have been rolling around the hood in a purple Voodoo.',
-                author: 'Sweet',
+                content: 'The spirit trees whisper tonight. Can you feel the memories lingering in the air?',
+                author: 'Ahri',
                 created_at: 'Today at 11:30 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'Gather the homies and secure the turf.',
+                content: 'Are you still searching for the secrets of your past?',
                 author: 'Me',
                 created_at: 'Today at 11:32 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'Half the set is either locked up or slacking off on the corner.',
-                author: 'Sweet',
+                content: 'Step by step across Runeterra. Every soul carries a piece of a story I once forgot.',
+                author: 'Ahri',
                 created_at: 'Today at 11:35 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'Did you tell Ryder to grab the stash from Emmet?',
+                content: 'Be careful not to lose yourself in other people\'s memories.',
                 author: 'Me',
                 created_at: 'Today at 11:38 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Ryder is talking nonsense again, but we cannot afford to lose another block.',
-                author: 'Sweet',
+                content: 'I\'ve learned to guard my heart. Don\'t worry, the nine-tailed fox is watchful.',
+                author: 'Ahri',
                 created_at: 'Today at 11:41 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 6,
-                content: 'Grove Street is family. Meet me in the alley behind mom\'s house.',
-                author: 'Sweet',
+                content: 'Meet me at the lantern grove if you wish to talk under the stars.',
+                author: 'Ahri',
                 created_at: 'Today at 11:45 AM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 7,
-                content: 'Bring whatever heat you have on you.',
-                author: 'Sweet',
-                created_at: 'Today at 11:47 AM',
                 delivery_status: 'seen'
             }
         ]
     },
     {
         id: 4,
-        name: 'Ryder',
-        status: 'idle',
-        image: 'https://static.wikia.nocookie.net/esgta/images/a/ae/Ryder_%28SA%29.png/revision/latest?cb=20150720010013',
+        name: 'Ekko',
+        status: 'online',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Ekko.png',
+        banner_color: '#1abc9c',
+        member_since: 'May 28, 2015',
+        description: 'A young Zaunite prodigy who manipulates time with the Z-Drive and leads the Firelights.',
         messages: [
             {
                 id: 1,
-                content: 'Hey man, where did you get those military crates from?',
-                author: 'Me',
+                content: 'Just finished calibrating the Z-Drive. Four seconds into the past is all I need.',
+                author: 'Ekko',
                 created_at: 'Yesterday at 9:50 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'A genius does not reveal his trade secrets to bustas.',
-                author: 'Ryder',
+                content: 'Did the crystal hold up during high-voltage jumps?',
+                author: 'Me',
                 created_at: 'Yesterday at 9:58 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'Tell me you didn\'t raid the National Guard depot again...',
-                author: 'Me',
+                content: 'Smooth as silk. The Firelights managed to secure the lower Zaun supply line too.',
+                author: 'Ekko',
                 created_at: 'Yesterday at 10:01 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'I am a military genius, never forget that! Colonel Fuhrberger didn\'t stand a chance.',
-                author: 'Ryder',
+                content: 'Good job. What\'s the plan for tonight?',
+                author: 'Me',
                 created_at: 'Yesterday at 10:05 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'The cops are going to track that van all the way here.',
-                author: 'Me',
+                content: 'Checking on the mural tree and testing the hoverboard on the old bridge.',
+                author: 'Ekko',
                 created_at: 'Yesterday at 10:08 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 6,
-                content: 'I will explain the master plan tomorrow. Just stash the boxes.',
-                author: 'Ryder',
+                content: 'If you need a quick rewind, you know where our hideout is.',
+                author: 'Ekko',
                 created_at: 'Yesterday at 10:10 PM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 7,
-                content: 'We will get rich, man. Water-tight operation.',
-                author: 'Ryder',
-                created_at: 'Yesterday at 10:15 PM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 8,
-                content: 'Yeah, yeah, whatever you say.',
-                author: 'Me',
-                created_at: 'Yesterday at 10:20 PM',
                 delivery_status: 'seen'
             }
         ]
     },
     {
         id: 5,
-        name: 'Cesar Vialpando',
-        status: 'online',
-        image: 'https://static.wikia.nocookie.net/gtawiki/images/d/d0/CesarVialpando-GTASA.jpg/revision/latest?cb=20230705085102',
+        name: 'Vi',
+        status: 'dnd',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Vi.png',
+        banner_color: '#c0392b',
+        member_since: 'Dec 19, 2012',
+        description: 'Former street fighter turned Enforcer of Piltover, smashing crime with her colossal Atlas Gauntlets.',
         messages: [
             {
                 id: 1,
-                content: 'Hey holmes, are you coming to the lowrider meet down by Unity Station?',
-                author: 'Cesar Vialpando',
+                content: 'My Atlas gauntlets just smashed through a reinforced steel vault door. Feeling great.',
+                author: 'Vi',
                 created_at: 'Today at 3:10 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'Depends. Who else is pulling up?',
+                content: 'Did Caitlyn clear the operation with the Council first?',
                 author: 'Me',
                 created_at: 'Today at 3:15 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'Just the crew and some locals testing hydraulics for cash.',
-                author: 'Cesar Vialpando',
+                content: 'Punch first. Ask questions while punching. That\'s my motto.',
+                author: 'Vi',
                 created_at: 'Today at 3:18 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'Make sure your Blade is tuned, there is serious money on the line.',
-                author: 'Cesar Vialpando',
+                content: 'Haha, classic Vi. Any signs of Jinx?',
+                author: 'Me',
                 created_at: 'Today at 3:20 PM',
                 delivery_status: 'unseen'
             },
             {
                 id: 5,
-                content: 'I just installed the nitro at Loco Low Co. See you there.',
-                author: 'Me',
+                content: 'Just a trail of neon blue paint and spent shell casings. We are close.',
+                author: 'Vi',
                 created_at: 'Today at 3:25 PM',
                 delivery_status: 'unseen'
             },
             {
                 id: 6,
-                content: 'That\'s the spirit, carnal. Don\'t be late.',
-                author: 'Cesar Vialpando',
+                content: 'Going radio silent for a bit, gotta breach the lower sector.',
+                author: 'Vi',
                 created_at: 'Today at 3:27 PM',
                 delivery_status: 'unseen'
             }
@@ -286,49 +286,52 @@ export const contact_list_server = [
     },
     {
         id: 6,
-        name: 'Wu Zi Mu (Woozie)',
-        status: 'offline',
-        image: 'https://static.wikia.nocookie.net/gtawiki/images/4/47/Woozie-GTASA-HD.jpg/revision/latest?cb=20230622010848',
+        name: 'Lux',
+        status: 'online',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Lux.png',
+        banner_color: '#f39c12',
+        member_since: 'Oct 19, 2010',
+        description: 'A bright Demacian mage of the Crownguard family, secretly channeling radiant light magic.',
         messages: [
             {
                 id: 1,
-                content: 'Carl, the preparations at The Four Dragons Casino are almost complete.',
-                author: 'Wu Zi Mu (Woozie)',
+                content: 'Good morning! The sun is shining bright over the Demacian gates today!',
+                author: 'Lux',
                 created_at: 'Today at 8:00 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'Did you run into any trouble with the Sindacco family?',
+                content: 'Did you manage to avoid the Mageseeker patrols this morning?',
                 author: 'Me',
                 created_at: 'Today at 8:12 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'They attempted to disrupt our shipments, but fortune favored us as always.',
-                author: 'Wu Zi Mu (Woozie)',
+                content: 'Yes, kept my light magic calm and tucked under my cloak.',
+                author: 'Lux',
                 created_at: 'Today at 8:15 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'Glad to hear. Let me know when you need me in Venturas.',
+                content: 'Your brother Garen was asking about you earlier.',
                 author: 'Me',
                 created_at: 'Today at 8:20 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Come by the office when you arrive. We should play a game of cards.',
-                author: 'Wu Zi Mu (Woozie)',
+                content: 'I know... he worries too much. But light always finds a way to break through darkness.',
+                author: 'Lux',
                 created_at: 'Today at 8:22 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 6,
-                content: 'I must warn you, my luck is particularly sharp today.',
-                author: 'Wu Zi Mu (Woozie)',
+                content: 'I\'m heading to Terbisia to help the refugees. Stay safe out there!',
+                author: 'Lux',
                 created_at: 'Today at 8:24 AM',
                 delivery_status: 'unseen'
             }
@@ -336,163 +339,144 @@ export const contact_list_server = [
     },
     {
         id: 7,
-        name: 'Kendl Johnson',
-        status: 'online',
-        image: 'https://static.wikia.nocookie.net/gtawiki/images/6/6c/KendlJohnson-GTASA.png/revision/latest?cb=20230705085014',
+        name: 'Zed',
+        status: 'offline',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Zed.png',
+        banner_color: '#2c3e50',
+        member_since: 'Nov 13, 2012',
+        description: 'Master of the Order of Shadow, wielding forbidden shadow magic to ruthlessly defend Ionia.',
         messages: [
             {
                 id: 1,
-                content: 'Carl, have you checked the invoices for the garage in Doherty?',
-                author: 'Kendl Johnson',
+                content: 'Master Zed, the shadows report movement along the southern temple.',
+                author: 'Me',
                 created_at: 'Today at 4:00 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'Not yet, I was dealing with Sweet\'s issues in Ganton.',
-                author: 'Me',
+                content: 'The Order of Shadow is already in position. The unseen blade is the deadliest.',
+                author: 'Zed',
                 created_at: 'Today at 4:05 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'You guys cannot live in the past forever. We have a legitimate business now.',
-                author: 'Kendl Johnson',
+                content: 'Shall we intercept before the Kinkou arrive?',
+                author: 'Me',
                 created_at: 'Today at 4:08 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'Cesar and the mechanics are waiting for the spare parts shipment.',
-                author: 'Kendl Johnson',
+                content: 'Shen must not interfere. The balance he seeks is a weakness Ionia cannot afford.',
+                author: 'Zed',
                 created_at: 'Today at 4:10 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'I\'ll drop by San Fierro before nightfall to sort it out.',
-                author: 'Me',
+                content: 'Remain hidden until darkness falls. We strike in unison.',
+                author: 'Zed',
                 created_at: 'Today at 4:15 PM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 6,
-                content: 'Thank you. Somebody has to keep this family organized.',
-                author: 'Kendl Johnson',
-                created_at: 'Today at 4:18 PM',
                 delivery_status: 'seen'
             }
         ]
     },
     {
         id: 8,
-        name: 'The Truth',
-        status: 'offline',
-        image: 'https://static.wikia.nocookie.net/esgta/images/4/43/The_Truth.png/revision/latest?cb=20260115053544',
+        name: 'Thresh',
+        status: 'idle',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Thresh.png',
+        banner_color: '#16a085',
+        member_since: 'Jan 23, 2013',
+        description: 'A sadistic specter of the Shadow Isles who torments the living and reaps souls into his lantern.',
         messages: [
             {
                 id: 1,
-                content: 'Do you have everything ready at the farm?',
-                author: 'Me',
+                content: 'What delightful agony awaits in the mist tonight...',
+                author: 'Thresh',
                 created_at: 'Yesterday at 5:40 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'The black helicopters are circling the ridgeline. The frequency shifted.',
-                author: 'The Truth',
+                content: 'The lantern\'s glow is getting brighter, Chain Warden.',
+                author: 'Me',
                 created_at: 'Yesterday at 5:48 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'Wait, are the feds actually closing in?',
-                author: 'Me',
+                content: 'Fresh souls are always so eager to join the collection. They cry, they bargain...',
+                author: 'Thresh',
                 created_at: 'Yesterday at 5:50 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'There are no feds, only the unseen forces pulling the strings.',
-                author: 'The Truth',
+                content: 'Lucian is hunting you across the archipelago.',
+                author: 'Me',
                 created_at: 'Yesterday at 5:55 PM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Bring the Mothership. We must burn the crops before the satellite pass at dusk.',
-                author: 'The Truth',
+                content: 'Let the gunslinger come. His desperation makes for such sweet suffering.',
+                author: 'Thresh',
                 created_at: 'Yesterday at 6:00 PM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 6,
-                content: 'I brought the flamethrower. Meet me behind the barn.',
-                author: 'Me',
-                created_at: 'Yesterday at 6:05 PM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 7,
-                content: 'Do not think about pink elephants while driving, or they will track your thoughts.',
-                author: 'The Truth',
-                created_at: 'Yesterday at 6:15 PM',
                 delivery_status: 'seen'
             }
         ]
     },
     {
         id: 9,
-        name: 'Mike Toreno',
-        status: 'offline',
-        image: 'https://static.wikia.nocookie.net/gtawiki/images/d/d1/MikeToreno-GTASA.jpg/revision/latest?cb=20230630072110',
+        name: 'Caitlyn',
+        status: 'online',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Caitlyn.png',
+        banner_color: '#2980b9',
+        member_since: 'Jan 4, 2011',
+        description: 'The Sheriff of Piltover and brilliant investigator dedicated to keeping peace across the twin cities.',
         messages: [
             {
                 id: 1,
-                content: 'Turn your radio off. Not that channel, the whole receiver.',
-                author: 'Mike Toreno',
+                content: 'Report from the Sheriff\'s office: all checkpoints along the Promenade are active.',
+                author: 'Caitlyn',
                 created_at: 'Today at 7:00 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'Toreno? I thought you were dead after the chopper went down.',
+                content: 'Any leads on the stolen Hextech components?',
                 author: 'Me',
                 created_at: 'Today at 7:04 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'You think a missile launch is enough to settle an agency ledger? Grow up.',
-                author: 'Mike Toreno',
+                content: 'We found a customized cupcake trap in the ventilation ducts. Definitely chemtech tampering.',
+                author: 'Caitlyn',
                 created_at: 'Today at 7:06 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'What do you want from me now?',
+                content: 'Have you coordinated with Vi yet?',
                 author: 'Me',
                 created_at: 'Today at 7:10 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Drive out to the desert airstrip in Verdant Meadows. We have work to do.',
-                author: 'Mike Toreno',
+                content: 'She charged ahead without waiting for backup, as usual. I\'m heading out with the sniper squad.',
+                author: 'Caitlyn',
                 created_at: 'Today at 7:12 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 6,
-                content: 'Only if Sweet stays safe in prison like you promised.',
-                author: 'Me',
-                created_at: 'Today at 7:15 AM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 7,
-                content: 'Your brother is having pancakes right now. Be at the hangar in twenty minutes.',
-                author: 'Mike Toreno',
+                content: 'Keep your comms open in case we need extra perimeter control.',
+                author: 'Caitlyn',
                 created_at: 'Today at 7:18 AM',
                 delivery_status: 'unseen'
             }
@@ -500,56 +484,45 @@ export const contact_list_server = [
     },
     {
         id: 10,
-        name: 'Officer Tenpenny',
-        status: 'dnd',
-        image: 'https://static.wikia.nocookie.net/esgta/images/4/4c/OficialTenpennySA.png/revision/latest?cb=20221015154610',
+        name: 'Teemo',
+        status: 'offline',
+        image: 'https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Teemo.png',
+        banner_color: '#27ae60',
+        member_since: 'Feb 21, 2009',
+        description: 'A legendary Bandle City scout who upholds the Scout\'s Code with swift darts and toxic mushrooms.',
         messages: [
             {
                 id: 1,
-                content: 'See you around, officer.',
-                author: 'Me',
+                content: 'Captain Teemo on duty! Scouting reports for sector 4 completed, sir!',
+                author: 'Teemo',
                 created_at: 'Today at 9:00 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 2,
-                content: 'We will see each other when I say we see each other, Johnson.',
-                author: 'Officer Tenpenny',
+                content: 'How many poisonous mushrooms did you plant along the river path?!',
+                author: 'Me',
                 created_at: 'Today at 9:05 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 3,
-                content: 'I did what you asked at the docks. We are square.',
-                author: 'Me',
+                content: 'Just enough for tactical area denial! One step and... POP! Haha!',
+                author: 'Teemo',
                 created_at: 'Today at 9:08 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 4,
-                content: 'Square? You are in deep water and I am your life preserver.',
-                author: 'Officer Tenpenny',
+                content: 'Even our own allies are afraid to step into the tall grass.',
+                author: 'Me',
                 created_at: 'Today at 9:10 AM',
                 delivery_status: 'seen'
             },
             {
                 id: 5,
-                content: 'Do not leave the county if you care about your brother\'s court date.',
-                author: 'Officer Tenpenny',
-                created_at: 'Today at 9:12 AM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 6,
-                content: 'Just leave my family out of this.',
-                author: 'Me',
-                created_at: 'Today at 9:13 AM',
-                delivery_status: 'seen'
-            },
-            {
-                id: 7,
-                content: 'You work for C.R.A.S.H. until I say otherwise. I will see you soon.',
-                author: 'Officer Tenpenny',
+                content: 'Never underestimate the power of the Scout\'s Code! Stealth mode engaged.',
+                author: 'Teemo',
                 created_at: 'Today at 9:15 AM',
                 delivery_status: 'seen'
             }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './LoadingScreen.css';
 
+// Lista de consejos temáticos de Discord que se muestran durante la pantalla de carga
 const DISCORD_TIPS = [
     "You can type /shrug or /tableflip to quickly express yourself in chat.",
     "Holding Shift while clicking the delete button will bypass confirmation.",
@@ -11,12 +12,20 @@ const DISCORD_TIPS = [
     "Connecting to Discord gateway... Spinning up voice and text channels."
 ];
 
+/**
+ * Pantalla animada de carga estilo Discord (LoadingScreen).
+ * Muestra el logo oficial de Discord pulsando, puntos animados de progreso
+ * y un consejo aleatorio ("Did You Know").
+ *
+ * @param {object} props - Propiedades del componente.
+ * @param {Function} props.onComplete - Función de callback que se ejecuta tras completar el tiempo de carga.
+ */
 export default function LoadingScreen({ onComplete }) {
-    // Selecciona un tip de Discord aleatorio al inicializar el componente
+    // Selecciona un consejo de Discord aleatorio una única vez al montar el componente
     const [tip] = useState(() => DISCORD_TIPS[Math.floor(Math.random() * DISCORD_TIPS.length)]);
 
     useEffect(() => {
-        // Temporizador de 3 segundos con limpieza de memoria garantizada
+        // Temporizador simulado de carga (3 segundos) con función de limpieza garantizada
         const timer = setTimeout(() => {
             if (onComplete) {
                 onComplete();
@@ -29,7 +38,7 @@ export default function LoadingScreen({ onComplete }) {
     return (
         <div className="discord-loading-screen" role="status" aria-live="polite">
             <div className="loading-content">
-                {/* Logo oficial de Discord con animación de respiración y brillo */}
+                {/* Logo oficial de Clyde con animación de brillo y respiración */}
                 <div className="loading-logo-wrapper">
                     <svg
                         className="loading-clyde-logo"
@@ -42,14 +51,14 @@ export default function LoadingScreen({ onComplete }) {
                     </svg>
                 </div>
 
-                {/* Tres puntos interactivos de carga */}
+                {/* Tres puntos animados de carga */}
                 <div className="loading-dots-container" aria-hidden="true">
                     <span className="loading-dot" />
                     <span className="loading-dot" />
                     <span className="loading-dot" />
                 </div>
 
-                {/* Sección "DID YOU KNOW" típica de Discord */}
+                {/* Sección informativa "DID YOU KNOW" característica de Discord */}
                 <div className="loading-tip-container">
                     <h2 className="loading-tip-header">DID YOU KNOW</h2>
                     <p className="loading-tip-text">{tip}</p>

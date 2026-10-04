@@ -1,0 +1,257 @@
+/* src/Components/Chat/ContactProfilePanel.css */
+
+.contact-profile-panel {
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    min-width: 340px;
+    height: 100%;
+    background-color: var(--bg-sidebar);
+    border-left: 1px solid var(--border-separator);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px;
+    position: relative;
+    user-select: none;
+    animation: slideInProfile 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 5;
+}
+
+@keyframes slideInProfile {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Tarjeta contenedora estilo Discord con esquinas redondeadas y borde de 1px */
+.profile-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* Banner superior */
+.profile-panel-banner {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    min-height: 110px;
+    flex-shrink: 0;
+}
+
+.profile-panel-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.profile-panel-close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Contenedor del avatar flotando sobre el banner */
+.profile-panel-avatar-container {
+    position: relative;
+    padding: 0 16px;
+    height: 44px;
+    flex-shrink: 0;
+}
+
+.profile-panel-avatar-wrapper {
+    position: absolute;
+    top: -40px;
+    left: 16px;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background-color: var(--bg-card);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.profile-panel-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--bg-card);
+    box-sizing: border-box;
+    display: block;
+    background-color: var(--bg-app);
+}
+
+.profile-panel-status-badge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 4px solid var(--bg-card);
+    box-sizing: border-box;
+    background-clip: padding-box;
+}
+
+.profile-panel-status-badge.online {
+    background-color: var(--status-online);
+}
+
+.profile-panel-status-badge.idle {
+    background-color: var(--status-idle);
+}
+
+.profile-panel-status-badge.dnd {
+    background-color: var(--status-dnd);
+}
+
+.profile-panel-status-badge.offline {
+    background-color: var(--status-offline);
+}
+
+/* Cuerpo y contenido de la tarjeta */
+.profile-panel-body {
+    padding: 12px 16px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.profile-panel-name-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-panel-name {
+    color: var(--text-header);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+}
+
+.profile-panel-tag {
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Badges / Etiquetas con separación */
+.profile-panel-tags {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+}
+
+.profile-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background-color: var(--bg-input);
+    color: var(--text-normal);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+}
+
+.profile-tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.profile-panel-divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--border-subtle);
+    margin: 4px 0;
+}
+
+/* Secciones de About Me y Member Since */
+.profile-panel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.profile-section-heading {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.profile-section-text {
+    color: var(--text-normal);
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+    word-break: break-word;
+}
+
+.profile-member-since-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-normal);
+    font-size: 13px;
+}
+
+.profile-calendar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+}
+
+.profile-member-since-date {
+    font-weight: 500;
+}
+
+/* Adaptación responsive */
+@media (max-width: 900px) {
+    .contact-profile-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 320px;
+        padding: 12px;
+        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.4);
+    }
+}

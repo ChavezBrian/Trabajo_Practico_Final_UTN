@@ -3,8 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import useContactFilter from '../../hooks/useContactFilter';
 import './HomeScreen.css';
 
+/**
+ * Pantalla principal de Amigos (HomeScreen).
+ * Muestra la barra superior con pestañas ('Online' y 'All'), buscador en tiempo real,
+ * conteo dinámico de amigos y la lista de tarjetas de contactos con acceso directo a sus chats.
+ */
 export default function HomeScreen() {
     const navigate = useNavigate();
+
+    // Consumo del hook de filtrado y búsqueda de contactos
     const {
         activeTab,
         setActiveTab,
@@ -16,7 +23,7 @@ export default function HomeScreen() {
 
     return (
         <section className="friends-screen">
-            {/* 1. Header con pestañas */}
+            {/* 1. Barra superior con título de sección y pestañas de filtrado */}
             <header className="friends-topbar">
                 <div className="topbar-section-title">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-people-fill" viewBox="0 0 16 16">
@@ -27,6 +34,7 @@ export default function HomeScreen() {
 
                 <div className="topbar-divider" />
 
+                {/* Navegación por pestañas: filtra entre contactos conectados o todos */}
                 <nav className="friends-tabs" aria-label="Friends filter tabs">
                     <button
                         type="button"
@@ -50,7 +58,7 @@ export default function HomeScreen() {
 
             {/* 2. Área principal de contenido */}
             <div className="friends-content-area">
-                {/* Input de búsqueda estilo Discord con lupa */}
+                {/* Campo de búsqueda interactivo con icono y botón para limpiar */}
                 <div className="friends-search-wrapper">
                     <div className="friends-search-bar">
                         <svg
@@ -93,12 +101,12 @@ export default function HomeScreen() {
                     </div>
                 </div>
 
-                {/* Contador de amigos */}
+                {/* Título y conteo de amigos según el filtro aplicado */}
                 <h3 className="friends-count-title">
                     {activeTab === 'online' ? 'Online' : 'All Friends'} — {totalCount}
                 </h3>
 
-                {/* Lista de filas de amigos */}
+                {/* Lista de filas de amigos renderizada dinámicamente */}
                 <div className="friends-list">
                     {displayedContacts.map((contact) => (
                         <div
@@ -106,6 +114,7 @@ export default function HomeScreen() {
                             className="friend-row"
                             onClick={() => navigate(`/chat/${contact.id}`)}
                         >
+                            {/* Información del amigo: avatar, estado de presencia y nombre */}
                             <div className="friend-info-left">
                                 <div className="friend-avatar-wrapper">
                                     <img
@@ -121,7 +130,7 @@ export default function HomeScreen() {
                                 </div>
                             </div>
 
-                            {/* Botón de acción rápida: Abrir Chat */}
+                            {/* Botón de acción rápida para abrir el chat directo */}
                             <div className="friend-actions">
                                 <button
                                     type="button"
@@ -129,7 +138,7 @@ export default function HomeScreen() {
                                     title={`Message ${contact.name}`}
                                     aria-label={`Message ${contact.name}`}
                                     onClick={(e) => {
-                                        e.stopPropagation();
+                                        e.stopPropagation(); // Evita disparar el onClick del contenedor padre
                                         navigate(`/chat/${contact.id}`);
                                     }}
                                 >
@@ -141,6 +150,7 @@ export default function HomeScreen() {
                         </div>
                     ))}
 
+                    {/* Mensaje cuando ningún contacto coincide con la búsqueda o filtro */}
                     {displayedContacts.length === 0 && (
                         <div className="empty-friends-state">
                             <p>No one is around to play with Wumpus.</p>

@@ -2,18 +2,24 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './ServerRail.css';
 
+/**
+ * Riel vertical de servidores situado en el extremo izquierdo (ServerRail).
+ * Incluye el botón principal con el logo de Discord para acceder a los mensajes directos y a Home,
+ * junto con la píldora blanca indicadora del estado activo característica de la interfaz de Discord.
+ */
 export default function ServerRail() {
     const location = useLocation();
-    // En Discord, tanto la lista de amigos como los DMs pertenecen a Home
+
+    // En Discord, tanto la lista de amigos (/home) como los DMs (/chat/:id) pertenecen al espacio Home
     const isHomeActive = location.pathname === '/home' || location.pathname.startsWith('/chat');
 
     return (
         <aside className="discord-server-rail" aria-label="Servers navigation">
             <div className="server-item-wrapper">
-                {/* La píldora blanca activa al lado izquierdo */}
+                {/* Píldora blanca lateral que se expande cuando la sección Home está activa */}
                 <div className={`server-pill ${isHomeActive ? 'active' : ''}`} />
 
-                {/* El botón con el logo oficial grande de Discord en Blurple */}
+                {/* Botón con el logo icónico de Discord */}
                 <Link
                     to="/home"
                     className={`server-discord-btn ${isHomeActive ? 'active' : ''}`}
