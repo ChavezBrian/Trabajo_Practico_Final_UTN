@@ -17,12 +17,15 @@
     align-items: center;
     gap: 8px;
     min-width: 0;
+    flex: 1;
+    overflow: hidden;
 }
 
 .chat-header-actions {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
 }
 
 .chat-header-action-btn {
@@ -78,6 +81,9 @@
     color: var(--text-header);
     font-size: 16px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .status-badge-inline {
@@ -106,14 +112,23 @@
     color: var(--text-muted);
     font-size: 12px;
     text-transform: capitalize;
+    white-space: nowrap;
 }
 
+/* Adaptación responsive */
 @media (max-width: 768px) {
     .chat-header {
-        padding: 0 12px;
+        padding: 0 10px;
     }
 
     .chat-mobile-back {
         display: flex;
+    }
+}
+
+@media (max-width: 520px) {
+    /* Oculta la etiqueta textual del estado en pantallas de 320px a 520px para asegurar espacio */
+    .chat-header-status-label {
+        display: none;
     }
 }

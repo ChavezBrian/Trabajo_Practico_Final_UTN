@@ -49,6 +49,15 @@ export default function ContactDetailScreen() {
                     <MessageInput onSendMessage={sendMessage} contactName={contact.name} />
                 </div>
 
+                {/* Fondo oscurecido (backdrop) para cerrar el panel de perfil en tablets y pantallas medianas */}
+                {isProfileOpen && (
+                    <div
+                        className="profile-backdrop"
+                        onClick={() => setIsProfileOpen(false)}
+                        aria-hidden="true"
+                    />
+                )}
+
                 {/* Panel lateral desplegable con la información del contacto */}
                 {isProfileOpen && (
                     <ContactProfilePanel

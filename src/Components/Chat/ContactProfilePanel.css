@@ -1,10 +1,12 @@
 /* src/Components/Chat/ContactProfilePanel.css */
 
+/* Contenedor principal del panel de perfil lateral */
 .contact-profile-panel {
     display: flex;
     flex-direction: column;
     width: 340px;
-    min-width: 340px;
+    min-width: 0;
+    max-width: 360px;
     height: 100%;
     background-color: var(--bg-sidebar);
     border-left: 1px solid var(--border-separator);
@@ -17,7 +19,26 @@
     position: relative;
     user-select: none;
     animation: slideInProfile 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 5;
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+/* Barra de desplazamiento estilizada similar a la de Discord */
+.contact-profile-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.contact-profile-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.contact-profile-panel::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+    border-radius: 3px;
+}
+
+.contact-profile-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
 }
 
 @keyframes slideInProfile {
@@ -147,6 +168,7 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+    min-width: 0;
 }
 
 .profile-panel-name {
@@ -155,19 +177,23 @@
     font-weight: 700;
     line-height: 24px;
     margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .profile-panel-tag {
     color: var(--text-muted);
     font-size: 13px;
     font-weight: 500;
+    word-break: break-all;
 }
 
-/* Badges / Etiquetas con separación */
+/* Badges / Etiquetas con separación y adaptación flexible */
 .profile-panel-tags {
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 6px;
     margin-bottom: 2px;
 }
@@ -183,6 +209,7 @@
     font-weight: 600;
     border-radius: 4px;
     letter-spacing: 0.02em;
+    white-space: nowrap;
 }
 
 .profile-tag-dot {
@@ -221,6 +248,7 @@
     line-height: 18px;
     margin: 0;
     word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .profile-member-since-row {
@@ -229,6 +257,7 @@
     gap: 8px;
     color: var(--text-normal);
     font-size: 13px;
+    flex-wrap: wrap;
 }
 
 .profile-calendar-icon {
@@ -236,22 +265,149 @@
     align-items: center;
     justify-content: center;
     color: var(--text-muted);
+    flex-shrink: 0;
 }
 
 .profile-member-since-date {
     font-weight: 500;
 }
 
-/* Adaptación responsive */
-@media (max-width: 900px) {
+/* Pantallas grandes y ultra-anchas (1600px a 2000px) */
+@media (min-width: 1600px) {
+    .contact-profile-panel {
+        width: 360px;
+        max-width: 380px;
+        padding: 20px;
+    }
+
+    .profile-panel-banner {
+        height: 120px;
+        min-height: 120px;
+    }
+
+    .profile-panel-avatar-wrapper {
+        width: 82px;
+        height: 82px;
+        top: -42px;
+    }
+
+    .profile-panel-name {
+        font-size: 22px;
+    }
+}
+
+/* Pantallas medianas y tablets (<= 1023px): se comporta como panel cajón flotante con sombra */
+@media (max-width: 1023px) {
     .contact-profile-panel {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
+        width: 340px;
+        max-width: 85vw;
+        min-width: 0;
+        padding: 14px;
+        box-shadow: -6px 0 24px rgba(0, 0, 0, 0.45);
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-left: 1px solid var(--border-separator);
+        z-index: 20;
+    }
+}
+
+/* Pantallas móviles pequeñas (<= 480px y hasta 320px) */
+@media (max-width: 480px) {
+    .contact-profile-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         width: 100%;
-        max-width: 320px;
-        padding: 12px;
-        box-shadow: -4px 0 24px rgba(0, 0, 0, 0.4);
+        max-width: 100%;
+        min-width: 0;
+        padding: 8px;
+        border-radius: 0;
+        border-left: none;
+        box-shadow: none;
+        z-index: 25;
+    }
+
+    .profile-card-wrapper {
+        border-radius: 8px;
+        box-shadow: none;
+    }
+
+    .profile-panel-banner {
+        height: 96px;
+        min-height: 96px;
+    }
+
+    .profile-panel-close-btn {
+        width: 32px;
+        height: 32px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .profile-panel-avatar-container {
+        padding: 0 12px;
+        height: 36px;
+    }
+
+    .profile-panel-avatar-wrapper {
+        width: 68px;
+        height: 68px;
+        top: -34px;
+        left: 12px;
+    }
+
+    .profile-panel-avatar-img {
+        border-width: 5px;
+    }
+
+    .profile-panel-status-badge {
+        width: 18px;
+        height: 18px;
+        border-width: 3px;
+        bottom: 1px;
+        right: 1px;
+    }
+
+    .profile-panel-body {
+        padding: 10px 12px 16px 12px;
+        gap: 10px;
+    }
+
+    .profile-panel-name {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .profile-panel-tag {
+        font-size: 12px;
+    }
+
+    .profile-panel-tags {
+        gap: 8px;
+        margin-top: 4px;
+    }
+
+    .profile-tag-pill {
+        padding: 3px 8px;
+        font-size: 11px;
+    }
+
+    .profile-section-heading {
+        font-size: 10px;
+    }
+
+    .profile-section-text {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .profile-member-since-row {
+        font-size: 12px;
     }
 }

@@ -27,3 +27,40 @@
     height: 100%;
     overflow: hidden;
 }
+
+/* Telón de fondo (backdrop) semi-transparente para cerrar el panel de perfil en pantallas reducidas */
+.profile-backdrop {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .profile-backdrop {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.152);
+        backdrop-filter: blur(2px);
+        z-index: 15;
+        animation: fadeInBackdrop 0.18s ease;
+    }
+
+    @keyframes fadeInBackdrop {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-backdrop {
+        /* En pantallas móviles de 320px a 480px, el panel ocupa todo el ancho y no requiere telón */
+        display: none;
+    }
+}
